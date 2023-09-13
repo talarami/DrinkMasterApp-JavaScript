@@ -16,31 +16,26 @@
     nonAlcoholicOption.innerHTML = "non-alcoholic";
     selectList.appendChild(nonAlcoholicOption);
     container.appendChild(selectList);
-
-    /*
-    const choices = ["alcoholic", "non-alcoholic"];
-    choices.forEach(value => {
-      const option = document.createElement('option')
-      option.innerHTML = value
-      selectList.appendChild(option)
-    })
-    */
   }
 
   function addCheckboxes(listOfElements, container) {
-    for (var i = 0; i < listOfElements.length; i++) {
-          var listItem = document.createElement("li")
-          var checkbox = document.createElement("input");
-          checkbox.type = "checkbox"
-          checkbox.id = listOfElements[i];
-          checkbox.checked = listOfIngredients.includes(listOfElements[i]) ? true : false;
-          var label = document.createElement("label");
-          label.htmlFor = "id";
-          label.appendChild(document.createTextNode(listOfElements[i]));
-          listItem.appendChild(checkbox);
-          listItem.appendChild(label);
-          container.appendChild(listItem);
-          }
+    for (let i = 0; i < listOfElements.length; i++) {
+        let label = document.createElement("label");
+        label.classList.add("control")
+        label.classList.add("control--checkbox")
+        label.innerHTML = listOfElements[i];
+
+        let input = document.createElement("input");
+        input.type = "checkbox";
+        input.id = listOfElements[i];
+
+        let div =  document.createElement("div");
+        div.classList.add("control__indicator")
+
+        label.appendChild(input);
+        label.appendChild(div)
+        container.appendChild(label)
+    }
   } 
   
   function displayIngredientsPage() {
@@ -51,19 +46,19 @@
     document.getElementById("headerContainer").innerHTML = "You chose " + selectedAlcoholicOption.toLowerCase() + " drinks." ;
     document.getElementById("headerQuestion").innerHTML = "Please choose your ingredients:"
 
+    let body = document.getElementById("body");
+    body.classList.add("container")
     
     let bodyContainer = document.getElementById("bodyContainer");
-    let container = document.createElement("ul");
-    container.id = "bodyContainer";
-    bodyContainer.replaceWith(container);
+    bodyContainer.innerHTML ="";
+ 
     if(selectedAlcoholicOption.toLowerCase() == "alcoholic") {
-      addCheckboxes(alcohols, container);
-      addCheckboxes(liqueurs, container);
+      addCheckboxes(alcohols, bodyContainer);
+      addCheckboxes(liqueurs, bodyContainer);
     }
 
-    addCheckboxes(juices, container);
-    addCheckboxes(other, container);
-    bodyContainer.innerHTML = "non alcoholic was chosens"
+    addCheckboxes(juices, bodyContainer);
+    addCheckboxes(other, bodyContainer);
   }
  
   function displayResultsPage() {
