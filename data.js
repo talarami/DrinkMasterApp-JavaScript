@@ -49,9 +49,9 @@ const OtherIng = {
     Lime: "lime",
     Lemon: "lemon"
 }
-  var currentPage = Pages.StartPage;
-  var selectedAlcoholicOption = false;
-  var listOfIngredients = [];
+let currentPage = Pages.StartPage;
+let selectedAlcoholicOption = false;
+let listOfAvailableIngredients = [];
 
 let cubaLibre = new Drink("alcoholic", "Cuba Libre", [AlcoholIng.Rum, JuiceIng.Cola, OtherIng.Lime], "Fill a highball glass with ice and add the rum (2 ounces). Squeeze in the juice from 1/4 of a lime and drop in the spent peel. Top with the cola, then give a brief and gentle stir. Garnish with a lime wheel.")
 
@@ -75,21 +75,21 @@ let hugo = new Drink("alcoholic", "Hugo", [AlcoholIng.Prosecco, OtherIng.SodaWat
 
 let limoncelloSpritz = new Drink("alcoholic", "Limoncello Spritz", [AlcoholIng.Prosecco, AlcoholIng.Limoncello, OtherIng.SodaWater], "Add prosecco (2 ounces), limoncello (2 ounces) and top with soda water")
 
-let blueHawaii = newDrink("alcoholic", "Blue Hawaii", [AlcoholIng.Rum, AlcoholIng.Vodka, LiqueurIng.BlueCuracao, JuiceIng.PineappleJuice, JuiceIng.LemonJuice], "Place the rum (1 ounce), vodka (1 ounce), blue curacao (3/4 ounce), pineapple juice (2 ounces) and lemon juice (1/2 ounce) in a cocktail shaker. Add 2 handfuls of ice and shake until cold. Strain the drink into a glass filled with crushed ice.")
+let blueHawaii = new Drink("alcoholic", "Blue Hawaii", [AlcoholIng.Rum, AlcoholIng.Vodka, LiqueurIng.BlueCuracao, JuiceIng.PineappleJuice, JuiceIng.LemonJuice], "Place the rum (1 ounce), vodka (1 ounce), blue curacao (3/4 ounce), pineapple juice (2 ounces) and lemon juice (1/2 ounce) in a cocktail shaker. Add 2 handfuls of ice and shake until cold. Strain the drink into a glass filled with crushed ice.")
 
-let tequilaSunrise = newDrink("alcoholic", "Tequila Sunrise", [AlcoholIng.Tequila, JuiceIng.OrangeJuice, LiqueurIng.Grenadine], "Pour the tequila (2 ounces) into your glass over the ice. Next, add the orange juice (3 ounces) to help the ingredients blend together. Pour in the grenadine (1/2 ounce). Stir very gently to get the sunrise effect, or simply leave the syrup to settle at the bottom of the glass")
+let tequilaSunrise = new Drink("alcoholic", "Tequila Sunrise", [AlcoholIng.Tequila, JuiceIng.OrangeJuice, LiqueurIng.Grenadine], "Pour the tequila (2 ounces) into your glass over the ice. Next, add the orange juice (3 ounces) to help the ingredients blend together. Pour in the grenadine (1/2 ounce). Stir very gently to get the sunrise effect, or simply leave the syrup to settle at the bottom of the glass")
 
-let appleProseccoPunch = newDrink("alcoholic", "Apple Prosecco Punch", [JuiceIng.AppleJuice, AlcoholIng.Prosecco, AlcoholIng.Vodka, JuiceIng.LemonJuice, OtherIng.Lemon], "Pour the apple juice (4 ounces), vodka (1 ounce) and lemon juice (1 ounce) into a punch bowl and chill for 1-2 hrs. When you’re ready to serve top glass with prosecco, ice and lemon slices to garnish.")
+let appleProseccoPunch = new Drink("alcoholic", "Apple Prosecco Punch", [JuiceIng.AppleJuice, AlcoholIng.Prosecco, AlcoholIng.Vodka, JuiceIng.LemonJuice, OtherIng.Lemon], "Pour the apple juice (4 ounces), vodka (1 ounce) and lemon juice (1 ounce) into a punch bowl and chill for 1-2 hrs. When you’re ready to serve top glass with prosecco, ice and lemon slices to garnish.")
 
-let easyMargarita = newDrink("alcoholic", "Easy Margarita", [AlcoholIng.Tequila, JuiceIng.Sprite, OtherIng.Lime], "All you need to do is mix two ounces of Tequila with four ounces of sprite, pour into a highball glass with crushed ice, and stir. Then run a lime wedge on the rim of your glass to enjoy the drink.")
+let easyMargarita = new Drink("alcoholic", "Easy Margarita", [AlcoholIng.Tequila, JuiceIng.Sprite, OtherIng.Lime], "All you need to do is mix two ounces of Tequila with four ounces of sprite, pour into a highball glass with crushed ice, and stir. Then run a lime wedge on the rim of your glass to enjoy the drink.")
 
-let sunriseMocktail = newDrink("nonalcoholic", "Sunrise Mocktail", [JuiceIng.OrangeJuice, OtherIng.SodaWater, JuiceIng.CranberryJuice], "In a champagne glass, or glass of your choice, pour equal amounts orange juice and soda water. Take the cranberry juice and slowly pour it into the glass. Enjoy.")
+let sunriseMocktail = new Drink("nonalcoholic", "Sunrise Mocktail", [JuiceIng.OrangeJuice, OtherIng.SodaWater, JuiceIng.CranberryJuice], "In a champagne glass, or glass of your choice, pour equal amounts orange juice and soda water. Take the cranberry juice and slowly pour it into the glass. Enjoy.")
 
-let virginMojito = newDrink("nonalcoholic", "Virgin Mojito", [OtherIng.Lime, OtherIng.Mint, OtherIng.Honey, OtherIng.SodaWater], "Place lime (1, quartered) and honey (1tsp) in a glass. Muddle for about 1 minute to release the juice from the lime. Clap the mint (10 leaves) in your hands a few times to release the scent. Place it in the glass and press gently with the muddler 2-3 times. Top with soda water and ice. Stir.")
+let virginMojito = new Drink("nonalcoholic", "Virgin Mojito", [OtherIng.Lime, OtherIng.Mint, OtherIng.Honey, OtherIng.SodaWater], "Place lime (1, quartered) and honey (1tsp) in a glass. Muddle for about 1 minute to release the juice from the lime. Clap the mint (10 leaves) in your hands a few times to release the scent. Place it in the glass and press gently with the muddler 2-3 times. Top with soda water and ice. Stir.")
 
-let mimosaMocktail = newDrink("nonalcoholic", "Mimosa Mocktail", [JuiceIng.OrangeJuice, OtherIng.SodaWater, OtherIng.Lemon], "Add equal amounts orange juice and soda water to a champagne flute. Garnish with slice of lemon. Enjoy")
+let mimosaMocktail = new Drink("nonalcoholic", "Mimosa Mocktail", [JuiceIng.OrangeJuice, OtherIng.SodaWater, OtherIng.Lemon], "Add equal amounts orange juice and soda water to a champagne flute. Garnish with slice of lemon. Enjoy")
 
-let cinderellaMocktail = newDrink("nonalcoholic", "Cinderella Mocktail", [JuiceIng.OrangeJuice, JuiceIng.PineappleJuice, JuiceIng.LemonJuice, JuiceIng.CranberryJuice, OtherIng.SodaWater], "Add the orange, lemon, pineapple juice (2 ounces each) and cranberry juice (1 ounce) to a shaker with ice. Shake to combine. Fill a tall glass with ice and pour mixture in. Top with soda water")
+let cinderellaMocktail = new Drink("nonalcoholic", "Cinderella Mocktail", [JuiceIng.OrangeJuice, JuiceIng.PineappleJuice, JuiceIng.LemonJuice, JuiceIng.CranberryJuice, OtherIng.SodaWater], "Add the orange, lemon, pineapple juice (2 ounces each) and cranberry juice (1 ounce) to a shaker with ice. Shake to combine. Fill a tall glass with ice and pour mixture in. Top with soda water")
 
 
 const alcohols = [AlcoholIng.Vodka, AlcoholIng.Gin, AlcoholIng.Rum, AlcoholIng.Prosecco, AlcoholIng.Whiskey, AlcoholIng.Tequila, AlcoholIng.Limoncello]
