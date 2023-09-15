@@ -1,3 +1,4 @@
+  
   function displayStartPage(){
     document.getElementById("headerQuestion").innerHTML = "Which drinks would you like to make?"
     document.getElementById("headerContainer").innerHTML = []
@@ -17,7 +18,7 @@
     selectList.appendChild(nonAlcoholicOption);
     container.appendChild(selectList);
   }
-
+  
   function addCheckboxes(listOfElements, container) {
     for (let i = 0; i < listOfElements.length; i++) {
         let label = document.createElement("label");
@@ -95,8 +96,6 @@
         listOfAvailableIngredients.push(options[i].children[0].id)
     }
     bodyContainer.innerHTML = "";
-  
-
 
     let index = listOfDrinks.length - 1
     do 
@@ -130,9 +129,6 @@
     addListOfDrinks(listOfAvailableDrinks, ol);
 
     bodyContainer.appendChild(ol)
-
-
-    //addListOfDrinks(listOfAvailableDrinks, container);
 
   }
 
