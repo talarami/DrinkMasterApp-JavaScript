@@ -95,10 +95,8 @@
         listOfAvailableIngredients.push(options[i].children[0].id)
     }
     bodyContainer.innerHTML = "";
-    
-    document.getElementById("headerContainer").innerHTML = "You chose the following ingredients: " + listOfAvailableIngredients;
+  
 
-    document.getElementById("headerQuestion").innerHTML = "List of drinks: "
 
     let index = listOfDrinks.length - 1
     do 
@@ -110,6 +108,20 @@
       index--
     }
     while(index>=0)
+    
+
+    if (listOfAvailableIngredients.length == 0) {
+      document.getElementById("headerQuestion").innerHTML = "You didn't choose any ingredients"
+    }
+    else if (listOfAvailableIngredients.length >= 1 && listOfAvailableDrinks.length == 0) {
+      document.getElementById("headerContainer").innerHTML = "You chose the following ingredients: " + listOfAvailableIngredients; 
+      document.getElementById("headerQuestion").innerHTML = "No drinks matching your ingredients"
+    } else {
+      document.getElementById("headerContainer").innerHTML = "You chose the following ingredients: " + listOfAvailableIngredients;
+      document.getElementById("headerQuestion").innerHTML = "List of drinks: "
+    }
+    
+    
 
     let ol = document.createElement("ol")
     //ol.setAttribute("role", "list")
