@@ -37,7 +37,28 @@
         container.appendChild(label)
     }
   } 
-  
+
+  function addListOfDrinks(listOfElements, container) {
+    for (let i=0; i < listOfElements.length; i++) {
+      let li = document.createElement("li");
+      li.style="--i: " + (i + 1)
+
+      let h3 = document.createElement("h3")    
+      h3.innerHTML = listOfElements[i].name
+
+      let h4 = document.createElement("h4")
+      h4.innerHTML = "List of ingredients: " + listOfElements[i].ingredients 
+
+      let p = document.createElement("p")
+      p.innerHTML = listOfElements[i].recipe
+
+      li.appendChild(h3)
+      li.appendChild(h4)
+      li.appendChild(p)
+      container.appendChild(li)
+    }
+  }
+
   function displayIngredientsPage() {
     
     selectedAlcoholicOption = document.getElementById("alcoholSelect") ? 
@@ -47,12 +68,13 @@
     document.getElementById("headerQuestion").innerHTML = "Please choose your ingredients:"
 
     let body = document.getElementById("body");
-    body.classList.add("container")
+    body.classList.add("bodyContainer")
     
     let bodyContainer = document.getElementById("bodyContainer");
     bodyContainer.innerHTML ="";
  
-    if(selectedAlcoholicOption.toLowerCase() == "alcoholic") {
+    if(selectedAlcoholicOption.toLowerCase() == "alcoholic") 
+    {
       addCheckboxes(alcohols, bodyContainer);
       addCheckboxes(liqueurs, bodyContainer);
     }
@@ -63,19 +85,55 @@
  
   function displayResultsPage() {
     
-    listOfIngredients = [];
-    let container = document.getElementById("bodyContainer");
-    let options = container.children;
-    for (i = 0; i < options.length; i++)
+    let listOfAvailableDrinks = []
+    listOfAvailableIngredients = [];
+    let bodyContainer = document.getElementById("bodyContainer");
+    let options = bodyContainer.children;
+    for (let i = 0; i < options.length; i++)
     {
       if (options[i].children[0].checked == true)
-        listOfIngredients.push(options[i].children[0].id)
+        listOfAvailableIngredients.push(options[i].children[0].id)
     }
-    container.innerHTML = "";
-    
-    document.getElementById("headerContainer").innerHTML = "You chose the following ingredients: " + listOfIngredients;
+    bodyContainer.innerHTML = "";
+  
 
-    document.getElementById("headerQuestion").innerHTML = "LIST OF DRINKS"
+
+    let index = listOfDrinks.length - 1
+    do 
+    {
+      if (listOfDrinks[index].ingredients.every(x => listOfAvailableIngredients.includes(x)))
+      { 
+        listOfAvailableDrinks.push(listOfDrinks[index])
+      }
+      index--
+    }
+    while(index>=0)
+    
+
+    if (listOfAvailableIngredients.length == 0) {
+      document.getElementById("headerQuestion").innerHTML = "You didn't choose any ingredients"
+    }
+    else if (listOfAvailableIngredients.length >= 1 && listOfAvailableDrinks.length == 0) {
+      document.getElementById("headerContainer").innerHTML = "You chose the following ingredients: " + listOfAvailableIngredients; 
+      document.getElementById("headerQuestion").innerHTML = "No drinks matching your ingredients"
+    } else {
+      document.getElementById("headerContainer").innerHTML = "You chose the following ingredients: " + listOfAvailableIngredients;
+      document.getElementById("headerQuestion").innerHTML = "List of drinks: "
+    }
+    
+    
+
+    let ol = document.createElement("ol")
+    //ol.setAttribute("role", "list")
+    ol.role = "list"
+    ol.style = "--length: " + listOfAvailableDrinks.length
+    addListOfDrinks(listOfAvailableDrinks, ol);
+
+    bodyContainer.appendChild(ol)
+
+
+    //addListOfDrinks(listOfAvailableDrinks, container);
+
   }
 
   function goBack(){
